@@ -22,7 +22,7 @@ this.Topmost = true;
 ```
 To false:
 ```bash
-this.Topmost = true;
+this.Topmost = false;
 ```
 
 You may need to change Left value on MainWindow.xaml.cs (Line 62) for different monitor setup. Use 1420 for single monitor.
