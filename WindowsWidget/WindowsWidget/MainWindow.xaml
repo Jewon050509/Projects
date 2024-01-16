@@ -1,0 +1,73 @@
+﻿<!-- Program design -->
+
+<Window x:Class="WindowsWidget.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Height="200" Width="480"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border Background="#00efe6fa" CornerRadius="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.44*"/>
+                <RowDefinition Height="0.46*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="TimeDisplay" FontSize="80" FontWeight="Bold" FontFamily="Digital-7 Mono" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10"
+                       Text="{Binding Path=CurrentTime, UpdateSourceTrigger=PropertyChanged}"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#5A5A5A" ShadowDepth="0" BlurRadius="6"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <TextBlock x:Name="DateDisplay" FontSize="40" FontWeight="Bold" FontFamily="Digital-7 Mono" Grid.Row="2" Grid.Column="0" Margin="10"
+           Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:MMM.d,&#x202F;yyyy}'}"
+           VerticalAlignment="Center" HorizontalAlignment="Center"
+           Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#5A5A5A" BlurRadius="5" ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <TextBlock x:Name="gpuTempTextBlock" FontSize="35" FontWeight="Bold" FontFamily="Digital-7 Mono" Grid.Row="2" Grid.Column="1" Margin="10"
+           Text="{Binding GPUTemperature, StringFormat='{}{0}°C'}"
+           VerticalAlignment="Center" HorizontalAlignment="Center"
+           Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#5A5A5A" BlurRadius="5" ShadowDepth="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <Button x:Name="AudioOutputButton" Content="🔊" Click="AudioOutputButton_Click" FontSize="30" Grid.Row="2" Grid.Column="2" Margin="5">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="#bbbbbb"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Border>
+</Window>
